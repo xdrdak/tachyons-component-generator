@@ -1,52 +1,67 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="http://chat.vuejs.org/" target="_blank" rel="noopener">Vue Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank" rel="noopener">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div>
+    <h1>Basic Rounded Button</h1>
+    <div class="flex items-center">
+      <!-- Editor Pane-->
+      <div class="w-30">
+         <div class="measure">
+          <label for="btntext" class="f6 b db mb2">Button Text</label>
+          <input
+            id="btntext"
+            class="input-reset ba b--black-20 pa2 mb2 db w-100"
+            type="text"
+            aria-describedby="name-desc"
+            v-model="btnText"
+          >
+        </div>
+        <DropdownList
+          label="Border Radius"
+          :data="[0, 1, 2, 3, 4]"
+          :value="btnRadius"
+          v-on:update="updateBtnRadius"
+        />
+      </div>
+      <!-- Preview Pane -->
+      <div class="w-70 flex justify-center">
+        <!-- Object actual -->
+        <div>
+          <a :class="computedClass" href="#0">{{ btnText }}</a>
+        </div>
+        <!-- Markup output  -->
+        <div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import DropdownList from './form-elements/DropdownList';
+
 export default {
   name: 'hello',
+  components: {
+    DropdownList,
+  },
   data() {
     return {
-      msg: 'Welcome to Your Vue.js PWA',
+      btnText: 'Sample Text',
+      btnRadius: 3,
     };
+  },
+  computed: {
+    computedClass() {
+      return [
+        'f6 link dim ph3 pv2 mb2 dib white bg-black',
+        `br${this.btnRadius}`,
+      ].join(' ');
+    },
+  },
+  methods: {
+    updateBtnRadius(value) {
+      this.btnRadius = value;
+    },
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #35495E;
-}
-</style>
