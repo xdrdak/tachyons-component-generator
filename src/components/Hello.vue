@@ -14,12 +14,7 @@
             v-model="btnText"
           >
         </div>
-        <DropdownList
-          label="Border Radius"
-          :data="[0, 1, 2, 3, 4]"
-          :value="btnRadius"
-          v-on:update="updateBtnRadius"
-        />
+        <DropdownList label="Border Radius" :data="[0, 1, 2, 3, 4]" :value.sync="btnRadius" />
       </div>
       <!-- Preview Pane -->
       <div class="w-70 flex justify-center">
@@ -56,11 +51,6 @@ export default {
         'f6 link dim ph3 pv2 mb2 dib white bg-black',
         `br${this.btnRadius}`,
       ].join(' ');
-    },
-  },
-  methods: {
-    updateBtnRadius(value) {
-      this.btnRadius = value;
     },
   },
 };
