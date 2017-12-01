@@ -4,17 +4,11 @@
     <div class="flex items-center">
       <!-- Editor Pane-->
       <div class="w-30">
-         <div class="measure">
-          <label for="btntext" class="f6 b db mb2">Button Text</label>
-          <input
-            id="btntext"
-            class="input-reset ba b--black-20 pa2 mb2 db w-100"
-            type="text"
-            aria-describedby="name-desc"
-            v-model="btnText"
-          >
-        </div>
+        <TextInput label="Button Text" :value.sync="btnText"/>
         <DropdownList label="Border Radius" :data="[0, 1, 2, 3, 4]" :value.sync="btnRadius" />
+        <DropdownList label="Font Size" :data="[6, 5, 4, 3, 2, 1]" :value.sync="fontSize" />
+        <DropdownList label="Padding Horizontal" :data="[0, 1, 2, 3, 4, 5, 6, 7]" :value.sync="paddingH" />
+        <DropdownList label="Padding Vertical" :data="[0, 1, 2, 3, 4, 5, 6, 7]" :value.sync="paddingV" />
       </div>
       <!-- Preview Pane -->
       <div class="w-70 flex justify-center">
@@ -32,23 +26,31 @@
 </template>
 
 <script>
+import TextInput from './form-elements/TextInput';
 import DropdownList from './form-elements/DropdownList';
 
 export default {
   name: 'hello',
   components: {
     DropdownList,
+    TextInput,
   },
   data() {
     return {
       btnText: 'Sample Text',
       btnRadius: 3,
+      fontSize: 6,
+      paddingH: 3,
+      paddingV: 2,
     };
   },
   computed: {
     computedClass() {
       return [
-        'f6 link dim ph3 pv2 mb2 dib white bg-black',
+        'link dim dib white bg-black',
+        `pv${this.paddingV}`,
+        `ph${this.paddingH}`,
+        `f${this.fontSize}`,
         `br${this.btnRadius}`,
       ].join(' ');
     },

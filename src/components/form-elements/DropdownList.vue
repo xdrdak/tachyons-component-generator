@@ -12,7 +12,11 @@
 <script>
 export default {
   name: 'dropdownlist',
-  props: ['label', 'data', 'value'],
+  props: {
+    label: String,
+    data: Array,
+    value: [String, Number],
+  },
   methods: {
     updateValue({ target: { value } }) {
       this.$emit('update:value', value);
