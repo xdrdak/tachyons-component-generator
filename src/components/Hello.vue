@@ -16,11 +16,12 @@
 </template>
 
 <script>
-import sanitize from '../utils/sanitize';
-import { fontColors, bgColors } from '../tachyons-utils/colors';
-import ComponentEditor from '../slot-templates/ComponentEditor';
-import TextInput from './form-elements/TextInput';
-import DropdownList from './form-elements/DropdownList';
+import sanitize from '@/utils/sanitize';
+import converter from '@/tachyons-utils/converter';
+import { fontColors, bgColors } from '@/tachyons-utils/colors';
+import ComponentEditor from '@/slot-templates/ComponentEditor';
+import TextInput from '@/components/form-elements/TextInput';
+import DropdownList from '@/components/form-elements/DropdownList';
 
 const component = (text, className) => `
 <a class="${className}" href="#0">
@@ -49,15 +50,7 @@ export default {
   },
   computed: {
     computedClass() {
-      return [
-        'link dim',
-        this.fontColor,
-        `bg-${this.bgColor}`,
-        `pv${this.paddingV}`,
-        `ph${this.paddingH}`,
-        `f${this.fontSize}`,
-        `br${this.borderRadius}`,
-      ].join(' ');
+      return converter.dataObjectToTachyonsString(this.$data, ['link dim']);
     },
     computedComponent() {
       return component(
