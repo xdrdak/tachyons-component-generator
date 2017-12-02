@@ -10,17 +10,23 @@
       <DropdownList label="Button Text Color" :data="fontColors" :value.sync="btnFontColor" />
       <DropdownList label="Background Color" :data="bgColors" :value.sync="btnBgColor" />
     </div>
-    <div slot="component-preview">
-      <a :class="computedClass" href="#0">{{ btnText }}</a>
-    </div>
+    <div slot="component-preview" v-html="computedSafeComponent"></div>
+    <code class="html" slot="component-raw">{{ computedComponent }}</code>
   </ComponentEditor>
 </template>
 
 <script>
+import sanitize from '../utils/sanitize';
 import { fontColors, bgColors } from '../tachyons-utils/colors';
 import ComponentEditor from '../slot-templates/ComponentEditor';
 import TextInput from './form-elements/TextInput';
 import DropdownList from './form-elements/DropdownList';
+
+const component = (text, className) => `
+<a class="${className}" href="#0">
+  ${text}
+</a>
+`;
 
 export default {
   name: 'hello',
@@ -53,6 +59,18 @@ export default {
         `f${this.fontSize}`,
         `br${this.btnRadius}`,
       ].join(' ');
+    },
+    computedComponent() {
+      return component(
+        this.btnText,
+        this.computedClass,
+      );
+    },
+    computedSafeComponent() {
+      return component(
+        sanitize.encodeHTML(this.btnText),
+        sanitize.encodeHTML(this.computedClass),
+      );
     },
   },
 };

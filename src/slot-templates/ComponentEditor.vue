@@ -8,16 +8,23 @@
       <div class="w-30">
         <slot name="editor-pane"></slot>
       </div>
-      <div class="w-70 flex justify-center">
+      <div class="w-70 flex pl3 flex-column">
         <!-- Object actual -->
         <div>
           <slot name="component-preview"></slot>
         </div>
-        <!-- Markup output  -->
+        <!-- Markup output -->
         <div>
-          <slot name="component-output"></slot>
+          <pre><slot name="component-raw"></slot></pre>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: 'SlotComponentEditor',
+};
+</script>
