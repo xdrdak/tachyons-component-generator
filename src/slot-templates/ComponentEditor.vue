@@ -5,17 +5,17 @@
     </div>
     <div class="flex items-center">
       <!-- Editor Pane-->
-      <div class="w-30">
+      <div class="w-20">
         <slot name="editor-pane"></slot>
       </div>
-      <div class="w-70 flex pl3 flex-column">
+      <div class="w-80 flex pl3 flex-column">
         <!-- Object actual -->
         <div>
           <slot name="component-preview"></slot>
         </div>
         <!-- Markup output -->
         <div>
-          <pre><slot name="component-raw"></slot></pre>
+          <pre class="bg-near-black light-green pa4 b br2"><slot name="component-raw"></slot></pre>
         </div>
       </div>
     </div>
