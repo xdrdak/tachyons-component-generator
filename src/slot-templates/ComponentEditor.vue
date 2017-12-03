@@ -29,8 +29,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
   pre {
-    white-space: pre-wrap;
+    overflow: auto;
   }
 </style>

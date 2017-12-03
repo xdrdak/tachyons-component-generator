@@ -28,6 +28,7 @@ export default {
         createRoute('Basic Button', '/component/BasicButton'),
         createRoute('Small Profile Card', '/component/SmallProfileCard'),
         createRoute('Basic Form Inputs', '/component/FormInputs'),
+        createRoute('Input with an addon', '/component/InputWithAddon'),
       ],
     };
   },

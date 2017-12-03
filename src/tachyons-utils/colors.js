@@ -43,6 +43,25 @@ const fontColors = baseColors.concat([
 ]);
 
 const bgColors = baseColors.concat([
+  'black-90',
+  'black-80',
+  'black-70',
+  'black-60',
+  'black-50',
+  'black-40',
+  'black-30',
+  'black-20',
+  'black-10',
+  'black-05',
+  'white-90',
+  'white-80',
+  'white-70',
+  'white-60',
+  'white-50',
+  'white-40',
+  'white-30',
+  'white-20',
+  'white-10',
   'inherit',
   'transparent',
 ]);
