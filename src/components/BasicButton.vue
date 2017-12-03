@@ -7,8 +7,8 @@
       <DropdownList label="Font Size" :data="[6, 5, 4, 3, 2, 1]" :value.sync="fontSize" />
       <DropdownList label="Padding Horizontal" :data="[0, 1, 2, 3, 4, 5, 6, 7]" :value.sync="paddingH" />
       <DropdownList label="Padding Vertical" :data="[0, 1, 2, 3, 4, 5, 6, 7]" :value.sync="paddingV" />
-      <DropdownList label="Button Text Color" :data="fontColors" :value.sync="fontColor" />
-      <DropdownList label="Background Color" :data="bgColors" :value.sync="bgColor" />
+      <DropdownListColors label="Button Text Color" :value.sync="fontColor" />
+      <DropdownListColors label="Background Color" colorsFor="background" :value.sync="bgColor" />
     </div>
     <div slot="component-preview" v-html="computedSafeComponent"></div>
     <code class="html" slot="component-raw">{{ computedComponent }}</code>
@@ -18,10 +18,10 @@
 <script>
 import sanitize from '@/utils/sanitize';
 import converter from '@/tachyons-utils/converter';
-import { fontColors, bgColors } from '@/tachyons-utils/colors';
 import ComponentEditor from '@/slot-templates/ComponentEditor';
 import TextInput from '@/components/form-elements/TextInput';
 import DropdownList from '@/components/form-elements/DropdownList';
+import DropdownListColors from '@/components/form-elements/DropdownListColors';
 
 const component = (text, className) => `
 <a class="${className}" href="#0">
@@ -29,16 +29,15 @@ const component = (text, className) => `
 </a>`.trim();
 
 export default {
-  name: 'hello',
+  name: 'basic-button',
   components: {
     DropdownList,
+    DropdownListColors,
     TextInput,
     ComponentEditor,
   },
   data() {
     return {
-      fontColors,
-      bgColors,
       btnText: 'Sample Text',
       borderRadius: 3,
       fontSize: 6,
@@ -50,7 +49,7 @@ export default {
   },
   computed: {
     computedClass() {
-      return converter.dataObjectToTachyonsString(this.$data, ['link dim']);
+      return converter.dataObjectToTachyonsString(this.$data, ['link dim dib']);
     },
     computedComponent() {
       return component(
