@@ -4,7 +4,9 @@ const tachyonsMap = {
   paddingV: 'pv',
   fontColor: '',
   bgColor: 'bg-',
+  borderColor: 'b--',
   borderRadius: 'br',
+  paddingAll: 'pa',
 };
 
 const dataObjectToTachyonsString = (data, extraClasses = []) => (
