@@ -6,10 +6,14 @@
       <DropdownList label="Border Radius" :data="[0, 1, 2, 3, 4]" :value.sync="card.borderRadius" />
       <DropdownList label="Padding" :data="[0, 1, 2, 3, 4, 5, 6]" :value.sync="card.paddingAll" />
       <DropdownListColors label="Border Color" colorsFor="border" :value.sync="card.borderColor" />
+      <DropdownList label="Border Width" :data="['default', 1, 2, 3]" :value.sync="card.borderWidth" />
       <DropdownListColors label="Background Color" colorsFor="background" :value.sync="card.bgColor" />
       <hr />
       <h4>Avatar</h4>
       <DropdownListColors label="Border Color" colorsFor="border" :value.sync="avatar.borderColor" />
+      <DropdownList label="Border Width" :data="['default', 1, 2, 3]" :value.sync="avatar.borderWidth" />
+      <DropdownList label="Border Radius" :data="[0, 'round']" :value.sync="avatar.borderRadius" />
+      <DropdownListColors label="Background Color" colorsFor="background" :value.sync="avatar.bgColor" />
       <hr />
       <h4>Card Heading</h4>
       <DropdownList label="Font Size" :data="[1, 2, 3, 4, 5, 6]" :value.sync="heading.fontSize" />
@@ -33,7 +37,7 @@ import DropdownListColors from '@/components/form-elements/DropdownListColors';
 const component = (cardClass, avatarClass, headingClass, subHeadingClass) => `
 <article class="${cardClass} center ba">
   <div class="tc">
-    <img src="/static/img/avatar.png" class="${avatarClass} br-100 h4 w4 dib ba pa2" title="Photo the Chief Moe Officer">
+    <img src="/static/img/avatar.png" class="${avatarClass} h4 w4 dib ba pa2" title="Photo the Chief Moe Officer">
     <h1 class="${headingClass} mb2">Yuki W.</h1>
     <h2 class="${subHeadingClass} fw4 gray mt0">CMO (Chief Moe Officer)</h2>
   </div>
@@ -54,9 +58,13 @@ export default {
         paddingAll: 4,
         borderColor: 'black-10',
         bgColor: 'white',
+        borderWidth: 'default',
       },
       avatar: {
         borderColor: 'black-05',
+        borderWidth: 'default',
+        bgColor: 'transparent',
+        borderRadius: 'round',
       },
       heading: {
         fontSize: 3,
@@ -73,7 +81,7 @@ export default {
         this.avatar,
         this.heading,
         this.subHeading,
-      ].map(converter.dataObjectToTachyonsString);
+      ].map(x => converter.dataObjectToTachyonsString(x, []));
     },
     computedComponent() {
       return component(

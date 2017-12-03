@@ -15,6 +15,10 @@ function strategyOutline(_, data) {
   return data === 'yes' ? '' : 'outline-transparent';
 }
 
+function strategyBorderRadius(key, data) {
+  return data === 'round' ? 'br-100' : (key + data);
+}
+
 function strategyBorderWidth(key, data) {
   return data === 'default' ? '' : (key + data);
 }
@@ -23,6 +27,8 @@ function tachyonsEdgeCases(objectKey, tachyonsKey, data) {
   switch (objectKey) {
     case 'outline':
       return strategyOutline(tachyonsKey, data);
+    case 'borderRadius':
+      return strategyBorderRadius(tachyonsKey, data);
     case 'borderWidth':
       return strategyBorderWidth(tachyonsKey, data);
     default:
@@ -36,6 +42,7 @@ const dataObjectToTachyonsString = (data, extraClasses = []) => (
     .map(key => tachyonsEdgeCases(key, tachyonsMap[key], data[key]))
     .concat(extraClasses)
     .join(' ')
+    .trim()
 );
 
 export default {
