@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb3">
     <router-link to="/" class="f6 no-underline underline-hover blue dib v-mid mb0">Back</router-link>
     <div>
       <slot name="component-name"></slot>
