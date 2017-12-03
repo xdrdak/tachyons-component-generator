@@ -33,9 +33,9 @@ import DropdownListColors from '@/components/form-elements/DropdownListColors';
 const component = (cardClass, avatarClass, headingClass, subHeadingClass) => `
 <article class="${cardClass} center ba">
   <div class="tc">
-    <img src="http://tachyons.io/img/avatar_1.jpg" class="${avatarClass} br-100 h4 w4 dib ba pa2" title="Photo of a kitty staring at you">
-    <h1 class="${headingClass} mb2">Mimi W.</h1>
-    <h2 class="${subHeadingClass} fw4 gray mt0">CCO (Chief Cat Officer)</h2>
+    <img src="/static/img/avatar.png" class="${avatarClass} br-100 h4 w4 dib ba pa2" title="Photo the Chief Moe Officer">
+    <h1 class="${headingClass} mb2">Yuki W.</h1>
+    <h2 class="${subHeadingClass} fw4 gray mt0">CMO (Chief Moe Officer)</h2>
   </div>
 </article>`.trim();
 
@@ -69,10 +69,10 @@ export default {
   computed: {
     computedClass() {
       return [
-        this.$data.card,
-        this.$data.avatar,
-        this.$data.heading,
-        this.$data.subHeading,
+        this.card,
+        this.avatar,
+        this.heading,
+        this.subHeading,
       ].map(converter.dataObjectToTachyonsString);
     },
     computedComponent() {
