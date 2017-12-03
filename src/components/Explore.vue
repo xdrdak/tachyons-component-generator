@@ -18,19 +18,16 @@
 </template>
 
 <script>
+const createRoute = (label, route) => ({ label, route });
+
 export default {
   name: 'Explore',
   data() {
     return {
       components: [
-        {
-          label: 'Basic Button',
-          route: '/component/BasicButton',
-        },
-        {
-          label: 'Small Profile Card',
-          route: '/component/SmallProfileCard',
-        },
+        createRoute('Basic Button', '/component/BasicButton'),
+        createRoute('Small Profile Card', '/component/SmallProfileCard'),
+        createRoute('Basic Form Inputs', '/component/FormInputs'),
       ],
     };
   },
