@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <span>Tachyons Component Generator</span>
+      <a href="/">Tachyons Component Generator</a href="">
     </header>
     <main class="mw8 center">
       <router-view></router-view>
@@ -39,7 +39,7 @@ header {
   color: #ffffff;
 }
 
-header span {
+header a {
   display: block;
   position: relative;
   font-size: 20px;
@@ -48,5 +48,7 @@ header span {
   font-weight: 400;
   box-sizing: border-box;
   padding-top: 16px;
+  color: white;
+  text-decoration: none;
 }
 </style>
